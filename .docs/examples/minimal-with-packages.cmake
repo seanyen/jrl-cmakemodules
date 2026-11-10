@@ -1,4 +1,5 @@
-# Target-based approach should work from CMake 2.8.12 but it should fully work from 3.1
+# Target-based approach should work from CMake 2.8.12 but it should fully work
+# from 3.1
 cmake_minimum_required(VERSION 2.8.12)
 
 # These variables have to be defined before running SETUP_PROJECT
@@ -12,14 +13,19 @@ include(cmake/base.cmake)
 project(${PROJECT_NAME} CXX)
 
 # Add a required dependency
-add_project_dependency(MyDependency REQUIRED)
+ADD_PROJECT_DEPENDENCY(MyDependency REQUIRED)
 
-# Another example to show that arguments can be passed down to the underlying find_package call
-add_project_dependency(Boost 1.50 REQUIRED COMPONENT timer)
+# Another example to show that arguments can be passed down to the underlying
+# find_package call
+ADD_PROJECT_DEPENDENCY(
+  Boost
+  1.50
+  REQUIRED
+  COMPONENT
+  timer
+)
 
 add_library(myLibrary ${MY_SOURCES})
 target_link_libraries(myLibrary MyDependency::MyAwesomeLib Boost::timer)
 
-install(TARGETS myLibrary
-        EXPORT ${TARGETS_EXPORT_NAME}
-        DESTINATION lib)
+install(TARGETS myLibrary EXPORT ${TARGETS_EXPORT_NAME} DESTINATION lib)

@@ -10,5 +10,4 @@ include(cmake/hpp.cmake)
 COMPUTE_PROJECT_ARGS(PROJECT_ARGS LANGUAGES CXX)
 project(${PROJECT_NAME} ${PROJECT_ARGS})
 
-# Configure the build of your project here
-# add_subdirectory(src)
+# Configure the build of your project here add_subdirectory(src)
